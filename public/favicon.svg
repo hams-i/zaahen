@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Zaahen">
+  <defs>
+    <linearGradient id="bg" x1="10" y1="2" x2="58" y2="62" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7a171d"/>
+      <stop offset="0.48" stop-color="#4a0a0d"/>
+      <stop offset="1" stop-color="#2a0608"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="18" y1="12" x2="48" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f0d48a"/>
+      <stop offset="0.4" stop-color="#e6c572"/>
+      <stop offset="0.75" stop-color="#c9a961"/>
+      <stop offset="1" stop-color="#8a6f2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="url(#bg)"/>
+  <rect x="3.25" y="3.25" width="57.5" height="57.5" rx="9.5" fill="none" stroke="#c9a961" stroke-width="1.2" opacity="0.7"/>
+  <path
+    fill="url(#gold)"
+    d="M15 14.5h34v7.2H28.4L47.6 42.3H49v7.2H15v-7.2h20.6L16.4 21.7H15z"
+  />
+</svg>

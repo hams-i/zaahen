@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Type — ceremonial, classical, codex */
+  --font-display: 'Cinzel', 'Trajan Pro', Georgia, serif;
+  --font-cormorant: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Warm near-black, never pure #000 — leaves room for shadow */
+  --obsidian: #08070a;
+  --void: #0c0a0d;
+  --ink: #15111a;
+
+  /* Antique divine gold — restrained, not gaudy */
+  --gold: #c9a961;
+  --gold-light: #e6c572;
+  --gold-dust: #6b5832;
+  --gold-ember: #8a6f2e;
+
+  /* Darkin blood — deep, oxidized */
+  --blood: #8b1318;
+  --blood-deep: #4a0a0d;
+  --blood-bright: #c8252e;
+
+  /* Divine ivory — warm, parchment-tinted */
+  --ivory: #f4e9c9;
+  --ivory-dim: #c9bf9a;
+  --ivory-ash: #6e6855;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  background: var(--obsidian);
+  color: var(--ivory);
+  scroll-behavior: auto; /* lenis handles this */
+}
+
+body {
+  background: var(--obsidian);
+  color: var(--ivory);
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 400;
+  overflow-x: clip;
+  cursor: default;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Custom selection — divine */
+::selection {
+  background: var(--gold);
+  color: var(--obsidian);
+  text-shadow: none;
+}
+::-moz-selection {
+  background: var(--gold);
+  color: var(--obsidian);
+}
+
+/* Scrollbar — slim and gold */
+::-webkit-scrollbar {
+  width: 6px;
+  background: var(--obsidian);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold-ember);
+  border-radius: 0;
+}
+
+/* ─── Hieroglyph grain overlay ─── */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+}
+
+/* ─── Marquee keyframes ─── */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee-x 60s linear infinite;
+  will-change: transform;
+}
+
+/* ─── Slow rotation for ornaments ─── */
+@keyframes slow-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.animate-slow-rotate {
+  animation: slow-rotate 80s linear infinite;
+}
+
+@keyframes counter-rotate {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+.animate-counter-rotate {
+  animation: counter-rotate 120s linear infinite;
+}
+
+/* ─── Divine glow pulse ─── */
+@keyframes divine-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%      { opacity: 0.85; transform: scale(1.06); }
+}
+.animate-divine-pulse {
+  animation: divine-pulse 6s ease-in-out infinite;
+}
+
+/* ─── Ember flicker (subtle for blood/darkin elements) ─── */
+@keyframes ember-flicker {
+  0%, 100% { opacity: 0.55; }
+  50%      { opacity: 0.95; }
+}
+.animate-ember {
+  animation: ember-flicker 3.4s ease-in-out infinite;
+}
+
+/* ─── Text utilities ─── */
+.text-ceremonial {
+  font-family: var(--font-display), serif;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+}
+.text-codex {
+  font-family: var(--font-mono), monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+}
+
+/* ─── Gold leaf gradient text ─── */
+.text-gold-leaf {
+  background: linear-gradient(
+    180deg,
+    var(--gold-light) 0%,
+    var(--gold) 38%,
+    var(--gold-ember) 72%,
+    var(--gold-light) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ─── Divine inscribed name — static gold, no live filters ─── */
+.text-divine-name {
+  background-image: linear-gradient(
+    180deg,
+    #f0d48a 0%,
+    #e6c572 28%,
+    #c9a961 58%,
+    #8a6f2e 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Cinematic vignette */
+.vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 35%,
+    rgba(8, 7, 10, 0.55) 78%,
+    var(--obsidian) 100%
+  );
+}
+
+/* Ornamental divider */
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--gold-ember) 18%,
+    var(--gold) 50%,
+    var(--gold-ember) 82%,
+    transparent 100%
+  );
+}
+
+/* Magnetic / interactive helpers */
+.hover-grow-line {
+  position: relative;
+}
+.hover-grow-line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hover-grow-line:hover::after {
+  transform: scaleX(1);
+}
+
+/* No-tap-highlight */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
